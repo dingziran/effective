@@ -318,10 +318,10 @@
              see gwt-maven-plugin documentation at codehaus.org -->
         <configuration>
           <!-- URL that should be automatically opened in the GWT shell (gwt:run). -->
-          <runTarget>DynaTableRf.html</runTarget>
+          <runTarget>effective.html</runTarget>
           <!-- Ask GWT to create the Story of Your Compile (SOYC) (gwt:compile) -->
           <compileReport>true</compileReport>
-          <module>com.google.gwt.sample.dynatablerf.DynaTableRf</module>
+          <module>com.dingziran.effective.effective</module>
           <logLevel>INFO</logLevel>
           <style>${gwt.style}</style>
 
