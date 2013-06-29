@@ -52,6 +52,33 @@
         </pluginRepository>
     </pluginRepositories>
     <dependencies>
+	    
+	    <!-- Google Web Toolkit (GWT) -->
+	
+	    <dependency>
+	      <groupId>com.google.gwt</groupId>
+	      <artifactId>gwt-user</artifactId>
+	      <version>${gwtVersion}</version>
+	      <!-- "provided" so that we don't deploy -->
+	      <scope>provided</scope>
+	    </dependency>
+	    
+	    <!-- RequestFactory server -->
+
+	    <dependency>
+	      <groupId>com.google.web.bindery</groupId>
+	      <artifactId>requestfactory-server</artifactId>
+	      <version>${gwtVersion}</version>
+	    </dependency>
+	    
+	    <!-- RequestFactory will use JSR 303 javax.validation if you let it -->
+	    <dependency>
+	      <groupId>javax.validation</groupId>
+	      <artifactId>validation-api</artifactId>
+	      <version>1.0.0.GA</version>
+	      <classifier>sources</classifier>
+	    </dependency>
+	    
         <!-- General dependencies for standard applications -->
         <dependency>
             <groupId>junit</groupId>
@@ -163,7 +190,63 @@
                     <target>${java.version}</target>
                     <encoding>${project.build.sourceEncoding}</encoding>
                 </configuration>
+		        <dependencies>
+		          <!-- Need to run the RF Validation tool. This works on both the command-line
+		               and in Eclipse, provided that m2e-apt is installed. -->
+		          <dependency>
+		            <groupId>com.google.web.bindery</groupId>
+		            <artifactId>requestfactory-apt</artifactId>
+		            <version>${gwtVersion}</version>
+		          </dependency>
+		        </dependencies>
             </plugin>
+            
+      <!-- GWT Maven Plugin-->
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>gwt-maven-plugin</artifactId>
+        <!-- TODO: Update version to 2.5.0 once gwt-maven-plugin 2.5.0 final is released (post-GWT 2.5.0) -->
+        <version>2.5.0-rc1</version>
+        <dependencies>
+          <dependency>
+            <groupId>com.google.gwt</groupId>
+            <artifactId>gwt-user</artifactId>
+            <version>${gwtVersion}</version>
+          </dependency>
+          <dependency>
+            <groupId>com.google.gwt</groupId>
+            <artifactId>gwt-dev</artifactId>
+            <version>${gwtVersion}</version>
+          </dependency>
+        </dependencies>
+        <!-- JS is only needed in the package phase, this speeds up testing -->
+        <executions>
+          <execution>
+            <phase>prepare-package</phase>
+            <goals>
+              <goal>compile</goal>
+            </goals>
+          </execution>
+        </executions>
+
+        <!-- Plugin configuration. There are many available options,
+             see gwt-maven-plugin documentation at codehaus.org -->
+        <configuration>
+          <!-- URL that should be automatically opened in the GWT shell (gwt:run). -->
+          <runTarget>DynaTableRf.html</runTarget>
+          <!-- Ask GWT to create the Story of Your Compile (SOYC) (gwt:compile) -->
+          <compileReport>true</compileReport>
+          <module>com.google.gwt.sample.dynatablerf.DynaTableRf</module>
+          <logLevel>INFO</logLevel>
+          <style>${gwt.style}</style>
+
+          <copyWebapp>true</copyWebapp>
+        </configuration>
+      </plugin>
+            
+            
+            
+            
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>aspectj-maven-plugin</artifactId>
@@ -202,6 +285,8 @@
                     <target>${java.version}</target>
                 </configuration>
             </plugin>
+            
+      <!-- Copy static web files before executing gwt:run -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
@@ -209,6 +294,22 @@
                 <configuration>
                     <encoding>${project.build.sourceEncoding}</encoding>
                 </configuration>
+		        <executions>
+		          <execution>
+		            <phase>compile</phase>
+		            <goals>
+		              <goal>copy-resources</goal>
+		            </goals>
+		            <configuration>
+		              <outputDirectory>${project.build.directory}/${project.build.finalName}</outputDirectory>
+		              <resources>
+		                <resource>
+		                  <directory>src/main/webapp</directory>
+		                </resource>
+		              </resources>
+		            </configuration>
+		          </execution>
+		        </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -290,5 +391,8 @@
                 </configuration>
             </plugin>
         </plugins>
+            <!-- Generate compiled stuff in the folder used for development mode -->
+    <outputDirectory>${project.build.directory}/${project.build.finalName}/WEB-INF/classes</outputDirectory>
+        
     </build>
 </project>
