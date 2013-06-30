@@ -40,10 +40,7 @@
   <set-configuration-property name="compiler.emulatedStack.recordLineNumbers" value="true" />
   <set-configuration-property name="compiler.emulatedStack.recordFileNames" value="true" />
   -->
-    <!-- Use a generator to create the source code -->
-  <generate-with class="com.dingziran.effective.generator.ShowcaseGenerator">
-    <when-type-assignable class="com.dingziran.effective.client.Showcase.GeneratorInfo" />
-  </generate-with>
+
   
   <entry-point class='com.dingziran.effective.client.Showcase' />  
   <!-- Internationalization support. -->

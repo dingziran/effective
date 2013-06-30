@@ -47,12 +47,6 @@ import java.util.Set;
  * Entry point classes define <code>onModuleLoad()</code>.
  */
 public class Showcase implements EntryPoint {
-  /**
-   * The type passed into the
-   * {@link com.google.gwt.sample.showcase.generator.ShowcaseGenerator}.
-   */
-  private static final class GeneratorInfo {
-  }
 
   /**
    * The static images used throughout the Showcase.
@@ -95,8 +89,6 @@ public class Showcase implements EntryPoint {
    * This is the entry point method.
    */
   public void onModuleLoad() {
-    // Generate the source code and css for the examples
-    GWT.create(GeneratorInfo.class);
 
     // Inject global styles.
     injectThemeStyleSheet();
