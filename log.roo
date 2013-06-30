@@ -3,3 +3,4 @@ project --topLevelPackage com.dingziran.effective --projectName effective --java
 // Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log closed at 2013-06-29 22:33:11
 // Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log opened at 2013-06-29 22:35:35
 jpa setup --database HYPERSONIC_IN_MEMORY --provider HIBERNATE 
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log closed at 2013-06-29 23:22:27

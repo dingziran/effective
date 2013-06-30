@@ -47,7 +47,9 @@ import java.util.Set;
  * Entry point classes define <code>onModuleLoad()</code>.
  */
 public class App implements EntryPoint {
+	private Shell shell;
   public void onModuleLoad() {
-	  RootPanel.get().add(new Button("hello world"));
+	    shell = new Shell();
+	  RootPanel.get().add(shell);
   }
 }
