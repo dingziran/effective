@@ -19,9 +19,6 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.RunAsyncCallback;
 import com.google.gwt.i18n.client.Constants;
 import com.dingziran.effective.client.ContentWidget;
-import com.dingziran.effective.client.ShowcaseAnnotations.ShowcaseData;
-import com.dingziran.effective.client.ShowcaseAnnotations.ShowcaseSource;
-import com.dingziran.effective.client.ShowcaseAnnotations.ShowcaseStyle;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
@@ -35,12 +32,10 @@ import com.google.gwt.user.client.ui.Widget;
 /**
  * Example file.
  */
-@ShowcaseStyle(".gwt-FileUpload")
 public class CwFileUpload extends ContentWidget {
   /**
    * The constants used in this Content Widget.
    */
-  @ShowcaseSource
   public static interface CwConstants extends Constants {
     String cwFileUploadButton();
 
@@ -58,7 +53,6 @@ public class CwFileUpload extends ContentWidget {
   /**
    * An instance of the constants.
    */
-  @ShowcaseData
   private final CwConstants constants;
 
   /**
@@ -75,7 +69,6 @@ public class CwFileUpload extends ContentWidget {
   /**
    * Initialize this example.
    */
-  @ShowcaseSource
   @Override
   public Widget onInitialize() {
     // Create a vertical panel to align the content

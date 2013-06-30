@@ -22,9 +22,6 @@ import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.i18n.client.Constants;
 import com.google.gwt.i18n.client.DateTimeFormat;
 import com.dingziran.effective.client.ContentWidget;
-import com.dingziran.effective.client.ShowcaseAnnotations.ShowcaseData;
-import com.dingziran.effective.client.ShowcaseAnnotations.ShowcaseSource;
-import com.dingziran.effective.client.ShowcaseAnnotations.ShowcaseStyle;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Label;
@@ -38,15 +35,11 @@ import java.util.Date;
 /**
  * Example file.
  */
-@ShowcaseStyle({
-    ".gwt-DatePicker", ".datePicker", "td.datePickerMonth", ".gwt-DateBox",
-    ".dateBox"})
 public class CwDatePicker extends ContentWidget {
 
   /**
    * The constants used in this Content Widget.
    */
-  @ShowcaseSource
   public static interface CwConstants extends Constants {
     String cwDatePickerBoxLabel();
 
@@ -60,7 +53,6 @@ public class CwDatePicker extends ContentWidget {
   /**
    * An instance of the constants.
    */
-  @ShowcaseData
   private final CwConstants constants;
 
   /**
@@ -78,7 +70,6 @@ public class CwDatePicker extends ContentWidget {
    * Initialize this example.
    */
   @SuppressWarnings("deprecation")
-  @ShowcaseSource
   @Override
   public Widget onInitialize() {
     // Create a basic date picker

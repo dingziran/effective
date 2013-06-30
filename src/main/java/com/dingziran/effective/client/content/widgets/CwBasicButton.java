@@ -21,9 +21,6 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.i18n.client.Constants;
 import com.dingziran.effective.client.ContentWidget;
-import com.dingziran.effective.client.ShowcaseAnnotations.ShowcaseData;
-import com.dingziran.effective.client.ShowcaseAnnotations.ShowcaseSource;
-import com.dingziran.effective.client.ShowcaseAnnotations.ShowcaseStyle;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
@@ -33,12 +30,10 @@ import com.google.gwt.user.client.ui.Widget;
 /**
  * Example file.
  */
-@ShowcaseStyle(".gwt-Button")
 public class CwBasicButton extends ContentWidget {
   /**
    * The constants used in this Content Widget.
    */
-  @ShowcaseSource
   public static interface CwConstants extends Constants {
     String cwBasicButtonClickMessage();
 
@@ -54,7 +49,6 @@ public class CwBasicButton extends ContentWidget {
   /**
    * An instance of the constants.
    */
-  @ShowcaseData
   private final CwConstants constants;
 
   /**
@@ -71,7 +65,6 @@ public class CwBasicButton extends ContentWidget {
   /**
    * Initialize this example.
    */
-  @ShowcaseSource
   @Override
   public Widget onInitialize() {
     // Create a panel to align the widgets

@@ -20,9 +20,6 @@ import com.google.gwt.core.client.RunAsyncCallback;
 import com.google.gwt.i18n.client.Constants;
 import com.dingziran.effective.client.ContentWidget;
 import com.dingziran.effective.client.Showcase;
-import com.dingziran.effective.client.ShowcaseAnnotations.ShowcaseData;
-import com.dingziran.effective.client.ShowcaseAnnotations.ShowcaseSource;
-import com.dingziran.effective.client.ShowcaseAnnotations.ShowcaseStyle;
 import com.dingziran.effective.client.ShowcaseConstants;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.HTML;
@@ -33,12 +30,10 @@ import com.google.gwt.user.client.ui.Widget;
 /**
  * Example file.
  */
-@ShowcaseStyle(".gwt-Hyperlink")
 public class CwHyperlink extends ContentWidget {
   /**
    * The constants used in this Content Widget.
    */
-  @ShowcaseSource
   public static interface CwConstants extends Constants {
     String cwHyperlinkChoose();
 
@@ -50,7 +45,6 @@ public class CwHyperlink extends ContentWidget {
   /**
    * An instance of the constants.
    */
-  @ShowcaseData
   private final CwConstants constants;
 
   /**
@@ -67,7 +61,6 @@ public class CwHyperlink extends ContentWidget {
   /**
    * Initialize this example.
    */
-  @ShowcaseSource
   @Override
   public Widget onInitialize() {
     // Add a label
@@ -115,7 +108,6 @@ public class CwHyperlink extends ContentWidget {
    * @param name the name to display for the link
    * @return a {@link Hyperlink}
    */
-  @ShowcaseSource
   private <C extends ContentWidget> Hyperlink getHyperlink(
       Class<C> cwClass, String name) {
     Hyperlink link = new Hyperlink(
