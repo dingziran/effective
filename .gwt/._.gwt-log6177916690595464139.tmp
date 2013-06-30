@@ -1,0 +1,298 @@
+Public resources found in...
+Translatable source found in...
+Found 2719 cached/archived units.  Used 2719 / 2856 units from cache.
+Compiling...
+   Compilation completed in 1.89 seconds
+Removing invalidated units
+Finding entry point classes
+Rebinding com.google.gwt.i18n.client.impl.LocaleInfoImpl
+   Invoking generator com.google.gwt.i18n.rebind.LocaleInfoGenerator
+      Processing interface com.google.gwt.i18n.client.constants.NumberConstantsImpl
+         Generating method body for notANumber()
+         Generating method body for currencyPattern()
+         Generating method body for decimalPattern()
+         Generating method body for decimalSeparator()
+         Generating method body for defCurrencyCode()
+         Generating method body for exponentialSymbol()
+         Generating method body for globalCurrencyPattern()
+         Generating method body for groupingSeparator()
+         Generating method body for infinity()
+         Generating method body for minusSign()
+         Generating method body for monetaryGroupingSeparator()
+         Generating method body for monetarySeparator()
+         Generating method body for percent()
+         Generating method body for percentPattern()
+         Generating method body for perMill()
+         Generating method body for plusSign()
+         Generating method body for scientificPattern()
+         Generating method body for simpleCurrencyPattern()
+         Generating method body for zeroDigit()
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.03 seconds
+      Removing invalidated units
+Rebinding com.dingziran.effective.client.Shell.ShowcaseShellUiBinder
+   Adding '4' new generated units
+      Compiling...
+         Compilation completed in 0.07 seconds
+      Removing invalidated units
+Rebinding com.dingziran.effective.client.ShellShowcaseShellUiBinderImpldesignTime1372558241321GenMessages
+   Invoking generator com.google.gwt.i18n.rebind.LocalizableGenerator
+      Processing interface com.dingziran.effective.client.ShellShowcaseShellUiBinderImpldesignTime1372558241321GenMessages
+         Generating method body for message1()
+         Generating method body for message2()
+         Generating method body for message3()
+         Generating method body for message4()
+         Generating method body for message5()
+         Generating method body for message6()
+         Generating method body for message7()
+      Generating com.dingziran.effective.client.ShellShowcaseShellUiBinderImpldesignTime1372558241321GenMessages.properties from ShellShowcaseShellUiBinderImpldesignTime1372558241321GenMessages_ for locale default
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding com.dingziran.effective.client.Shell_ShowcaseShellUiBinderImpl_designTime1372558241321.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface com.dingziran.effective.client.Shell_ShowcaseShellUiBinderImpl_designTime1372558241321.Template
+         Generating method body for html1()
+         Generating method body for html2()
+         Generating method body for html3()
+         Generating method body for html4()
+         Generating method body for html5()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.dingziran.effective.client.Shell_ShowcaseShellUiBinderImpl_designTime1372558241321_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.02 seconds
+      Removing invalidated units
+Rebinding com.dingziran.effective.client.resources.ShowcaseResources
+   Invoking generator com.google.gwt.resources.rebind.context.InlineClientBundleGenerator
+      Preparing method catI18N
+         Adding image 'com.dingziran.effective.client.resources.ShowcaseResources.catI18N'
+      Preparing method catLists
+         Adding image 'com.dingziran.effective.client.resources.ShowcaseResources.catLists'
+      Preparing method catOther
+         Adding image 'com.dingziran.effective.client.resources.ShowcaseResources.catOther'
+      Preparing method catPanels
+         Adding image 'com.dingziran.effective.client.resources.ShowcaseResources.catPanels'
+      Preparing method catPopups
+         Adding image 'com.dingziran.effective.client.resources.ShowcaseResources.catPopups'
+      Preparing method catTables
+         Adding image 'com.dingziran.effective.client.resources.ShowcaseResources.catTables'
+      Preparing method catTextInput
+         Adding image 'com.dingziran.effective.client.resources.ShowcaseResources.catTextInput'
+      Preparing method catWidgets
+         Adding image 'com.dingziran.effective.client.resources.ShowcaseResources.catWidgets'
+      Preparing method gwtLogo
+         Adding image 'com.dingziran.effective.client.resources.ShowcaseResources.gwtLogo'
+      Preparing method gwtLogoThumb
+         Adding image 'com.dingziran.effective.client.resources.ShowcaseResources.gwtLogoThumb'
+      Preparing method jimmy
+         Adding image 'com.dingziran.effective.client.resources.ShowcaseResources.jimmy'
+      Preparing method jimmyThumb
+         Adding image 'com.dingziran.effective.client.resources.ShowcaseResources.jimmyThumb'
+      Preparing method loading
+         Adding image 'com.dingziran.effective.client.resources.ShowcaseResources.loading'
+      Preparing method locale
+         Adding image 'com.dingziran.effective.client.resources.ShowcaseResources.locale'
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.02 seconds
+      Removing invalidated units
+Rebinding com.google.gwt.user.client.ui.impl.ClippedImageImpl.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface com.google.gwt.user.client.ui.impl.ClippedImageImpl.Template
+         Generating method body for image()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.dingziran.effective.client.Shell.ShowcaseShellUiBinder
+   Adding '4' new generated units
+      Compiling...
+         Compilation completed in 0.04 seconds
+      Removing invalidated units
+Rebinding com.dingziran.effective.client.ShellShowcaseShellUiBinderImpldesignTime1372558246137GenMessages
+   Invoking generator com.google.gwt.i18n.rebind.LocalizableGenerator
+      Processing interface com.dingziran.effective.client.ShellShowcaseShellUiBinderImpldesignTime1372558246137GenMessages
+         Generating method body for message1()
+         Generating method body for message2()
+         Generating method body for message3()
+         Generating method body for message4()
+         Generating method body for message5()
+         Generating method body for message6()
+         Generating method body for message7()
+      Generating com.dingziran.effective.client.ShellShowcaseShellUiBinderImpldesignTime1372558246137GenMessages.properties from ShellShowcaseShellUiBinderImpldesignTime1372558246137GenMessages_ for locale default
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.dingziran.effective.client.Shell_ShowcaseShellUiBinderImpl_designTime1372558246137.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface com.dingziran.effective.client.Shell_ShowcaseShellUiBinderImpl_designTime1372558246137.Template
+         Generating method body for html1()
+         Generating method body for html2()
+         Generating method body for html3()
+         Generating method body for html4()
+         Generating method body for html5()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.dingziran.effective.client.Shell_ShowcaseShellUiBinderImpl_designTime1372558246137_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Public resources found in...
+Translatable source found in...
+Found 2856 cached/archived units.  Used 2856 / 2856 units from cache.
+Compiling...
+   Compilation completed in 0.00 seconds
+Removing invalidated units
+Finding entry point classes
+Rebinding com.google.gwt.i18n.client.impl.LocaleInfoImpl
+   Invoking generator com.google.gwt.i18n.rebind.LocaleInfoGenerator
+      Processing interface com.google.gwt.i18n.client.constants.NumberConstantsImpl
+         Generating method body for notANumber()
+         Generating method body for currencyPattern()
+         Generating method body for decimalPattern()
+         Generating method body for decimalSeparator()
+         Generating method body for defCurrencyCode()
+         Generating method body for exponentialSymbol()
+         Generating method body for globalCurrencyPattern()
+         Generating method body for groupingSeparator()
+         Generating method body for infinity()
+         Generating method body for minusSign()
+         Generating method body for monetaryGroupingSeparator()
+         Generating method body for monetarySeparator()
+         Generating method body for percent()
+         Generating method body for percentPattern()
+         Generating method body for perMill()
+         Generating method body for plusSign()
+         Generating method body for scientificPattern()
+         Generating method body for simpleCurrencyPattern()
+         Generating method body for zeroDigit()
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding com.dingziran.effective.client.Shell.ShowcaseShellUiBinder
+   Adding '4' new generated units
+      Compiling...
+         Compilation completed in 0.04 seconds
+      Removing invalidated units
+Rebinding com.dingziran.effective.client.ShellShowcaseShellUiBinderImpldesignTime1372558359902GenMessages
+   Invoking generator com.google.gwt.i18n.rebind.LocalizableGenerator
+      Processing interface com.dingziran.effective.client.ShellShowcaseShellUiBinderImpldesignTime1372558359902GenMessages
+         Generating method body for message1()
+         Generating method body for message2()
+         Generating method body for message3()
+         Generating method body for message4()
+         Generating method body for message5()
+         Generating method body for message6()
+         Generating method body for message7()
+      Generating com.dingziran.effective.client.ShellShowcaseShellUiBinderImpldesignTime1372558359902GenMessages.properties from ShellShowcaseShellUiBinderImpldesignTime1372558359902GenMessages_ for locale default
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding com.dingziran.effective.client.Shell_ShowcaseShellUiBinderImpl_designTime1372558359902.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface com.dingziran.effective.client.Shell_ShowcaseShellUiBinderImpl_designTime1372558359902.Template
+         Generating method body for html1()
+         Generating method body for html2()
+         Generating method body for html3()
+         Generating method body for html4()
+         Generating method body for html5()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.dingziran.effective.client.Shell_ShowcaseShellUiBinderImpl_designTime1372558359902_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.dingziran.effective.client.resources.ShowcaseResources
+   Invoking generator com.google.gwt.resources.rebind.context.InlineClientBundleGenerator
+      Preparing method catI18N
+         Adding image 'com.dingziran.effective.client.resources.ShowcaseResources.catI18N'
+      Preparing method catLists
+         Adding image 'com.dingziran.effective.client.resources.ShowcaseResources.catLists'
+      Preparing method catOther
+         Adding image 'com.dingziran.effective.client.resources.ShowcaseResources.catOther'
+      Preparing method catPanels
+         Adding image 'com.dingziran.effective.client.resources.ShowcaseResources.catPanels'
+      Preparing method catPopups
+         Adding image 'com.dingziran.effective.client.resources.ShowcaseResources.catPopups'
+      Preparing method catTables
+         Adding image 'com.dingziran.effective.client.resources.ShowcaseResources.catTables'
+      Preparing method catTextInput
+         Adding image 'com.dingziran.effective.client.resources.ShowcaseResources.catTextInput'
+      Preparing method catWidgets
+         Adding image 'com.dingziran.effective.client.resources.ShowcaseResources.catWidgets'
+      Preparing method gwtLogo
+         Adding image 'com.dingziran.effective.client.resources.ShowcaseResources.gwtLogo'
+      Preparing method gwtLogoThumb
+         Adding image 'com.dingziran.effective.client.resources.ShowcaseResources.gwtLogoThumb'
+      Preparing method jimmy
+         Adding image 'com.dingziran.effective.client.resources.ShowcaseResources.jimmy'
+      Preparing method jimmyThumb
+         Adding image 'com.dingziran.effective.client.resources.ShowcaseResources.jimmyThumb'
+      Preparing method loading
+         Adding image 'com.dingziran.effective.client.resources.ShowcaseResources.loading'
+      Preparing method locale
+         Adding image 'com.dingziran.effective.client.resources.ShowcaseResources.locale'
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.02 seconds
+      Removing invalidated units
+Rebinding com.google.gwt.user.client.ui.impl.ClippedImageImpl.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface com.google.gwt.user.client.ui.impl.ClippedImageImpl.Template
+         Generating method body for image()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding com.dingziran.effective.client.Shell.ShowcaseShellUiBinder
+   Adding '4' new generated units
+      Compiling...
+         Compilation completed in 0.03 seconds
+      Removing invalidated units
+Rebinding com.dingziran.effective.client.ShellShowcaseShellUiBinderImpldesignTime1372558362017GenMessages
+   Invoking generator com.google.gwt.i18n.rebind.LocalizableGenerator
+      Processing interface com.dingziran.effective.client.ShellShowcaseShellUiBinderImpldesignTime1372558362017GenMessages
+         Generating method body for message1()
+         Generating method body for message2()
+         Generating method body for message3()
+         Generating method body for message4()
+         Generating method body for message5()
+         Generating method body for message6()
+         Generating method body for message7()
+      Generating com.dingziran.effective.client.ShellShowcaseShellUiBinderImpldesignTime1372558362017GenMessages.properties from ShellShowcaseShellUiBinderImpldesignTime1372558362017GenMessages_ for locale default
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding com.dingziran.effective.client.Shell_ShowcaseShellUiBinderImpl_designTime1372558362017.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface com.dingziran.effective.client.Shell_ShowcaseShellUiBinderImpl_designTime1372558362017.Template
+         Generating method body for html1()
+         Generating method body for html2()
+         Generating method body for html3()
+         Generating method body for html4()
+         Generating method body for html5()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.dingziran.effective.client.Shell_ShowcaseShellUiBinderImpl_designTime1372558362017_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units

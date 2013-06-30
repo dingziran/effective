@@ -221,50 +221,12 @@
           size='225'>
           <g:ScrollPanel
             styleName='{style.mainMenu}'>
-
+            <c:CellTree
+              ui:field='mainMenu' />
           </g:ScrollPanel>
         </g:west>
 
-        <!-- Main content area. -->
-        <g:center>
-          <g:DockLayoutPanel
-            unit='PT'>
-            <g:north
-              size='20'>
-              <g:FlowPanel
-                ui:field='contentButtons'
-                styleName='{style.contentButtons}'>
-                <g:Anchor
-                  ui:field='tabExample'
-                  addStyleNames='{style.contentButton}'>
-                  <ui:msg
-                    key='contentWidgetExample'>Example</ui:msg>
-                </g:Anchor>
-                <g:Anchor
-                  ui:field='tabStyle'
-                  addStyleNames='{style.contentButton}'>
-                  <ui:msg
-                    key='contentWidgetStyle'>CSS Style</ui:msg>
-                </g:Anchor>
-                <g:Anchor
-                  ui:field='tabSource'
-                  addStyleNames='{style.contentButton} {style.contentButtonSource}'>
-                  <ui:msg
-                    key='contentWidgetSource'>Source Code</ui:msg>
-                </g:Anchor>
-                <g:ListBox
-                  ui:field='tabSourceList'
-                  addStyleNames='{style.contentList}' />
-              </g:FlowPanel>
-            </g:north>
-
-            <g:center>
-              <g:SimpleLayoutPanel
-                ui:field='contentPanel' />
-            </g:center>
-          </g:DockLayoutPanel>
-        </g:center>
-      </g:DockLayoutPanel>
+        </g:DockLayoutPanel>
     </g:center>
 
   </g:DockLayoutPanel>

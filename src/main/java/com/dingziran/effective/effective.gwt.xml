@@ -22,6 +22,10 @@
   <inherits name='com.google.gwt.logging.Logging'/>
   <inherits name='com.google.web.bindery.requestfactory.RequestFactory' />
 
+  <inherits name="com.google.gwt.core.Core"/>
+  <inherits name="com.google.gwt.i18n.I18N"/>
+  <inherits name="com.google.gwt.i18n.CldrLocales"/>
+  <inherits name="com.google.gwt.user.theme.clean.CleanResources"/>
   <set-property name="gwt.logging.enabled" value="TRUE"/> 
   <set-property name="gwt.logging.logLevel" value="SEVERE"/>
   <set-property name="gwt.logging.consoleHandler" value="ENABLED" />
@@ -38,7 +42,15 @@
   <set-configuration-property name="compiler.emulatedStack.recordFileNames" value="true" />
   -->
   
-  <entry-point class='com.dingziran.effective.client.App' />
+  <entry-point class='com.dingziran.effective.client.App' />  
+  <!-- Internationalization support. -->
+  <extend-property name="locale" values="en"/>
+
+  <extend-property name="locale" values="zh"/>
+
+  <set-property-fallback name="locale" value="en"/>
+  <set-configuration-property name="locale.cookie" value="SHOWCASE_LOCALE"/>
+  <set-configuration-property name="locale.useragent" value="Y"/>
   
   <set-configuration-property name="CssResource.obfuscationPrefix" value="empty" />
 </module>

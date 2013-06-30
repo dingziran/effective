@@ -15,6 +15,7 @@
  */
 package com.dingziran.effective.client;
 
+import com.dingziran.effective.client.i18n.ShowcaseConstants;
 import com.google.gwt.cell.client.AbstractCell;
 import com.google.gwt.core.client.prefetch.RunAsyncCode;
 import com.google.gwt.i18n.client.Constants;
@@ -160,9 +161,9 @@ public class MainMenuTreeViewModel implements TreeViewModel {
    */
   private final SelectionModel<ContentWidget> selectionModel;
 
-  public MainMenuTreeViewModel(SelectionModel<ContentWidget> selectionModel) {
+  public MainMenuTreeViewModel(ShowcaseConstants constants,SelectionModel<ContentWidget> selectionModel) {
     this.selectionModel = selectionModel;
-    initializeTree();
+    initializeTree(constants);
   }
 
   /**
@@ -219,15 +220,17 @@ public class MainMenuTreeViewModel implements TreeViewModel {
   /**
    * Initialize the top level categories in the tree.
    */
-  private void initializeTree() {
+  private void initializeTree(ShowcaseConstants constants) {
     List<Category> catList = categories.getList();
 
     // Widgets.
     {
-      Category category = new Category("Category 1");
+      Category category = new Category(constants.categoryWidgets());
       catList.add(category);
       // CwCheckBox is the default example, so don't prefetch it.
-      //category.addExample(new CwCheckBox(constants), null);
+      category.addExample(new CwCheckBox(constants), null);
+      category.addExample(new CwRadioButton(constants),
+              RunAsyncCode.runAsyncCode(CwRadioButton.class));
     }
 
   }
