@@ -61,6 +61,13 @@
 	      <version>${gwtVersion}</version>
 	      <!-- "provided" so that we don't deploy -->
 	      <scope>provided</scope>
+	    </dependency>	    
+	    <dependency>
+	      <groupId>com.google.gwt</groupId>
+	      <artifactId>gwt-dev</artifactId>
+	      <version>${gwtVersion}</version>
+	      <!-- "provided" so that we don't deploy -->
+	      <scope>provided</scope>
 	    </dependency>
 	    
 	    <!-- RequestFactory server -->
@@ -476,6 +483,7 @@
                 </configuration>
             </plugin>
         </plugins>
+        
             <!-- Generate compiled stuff in the folder used for development mode -->
     <outputDirectory>${project.build.directory}/${project.build.finalName}/WEB-INF/classes</outputDirectory>
         

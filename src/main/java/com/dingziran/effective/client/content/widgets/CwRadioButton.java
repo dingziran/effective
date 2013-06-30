@@ -13,8 +13,12 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.dingziran.effective.client;
+package com.dingziran.effective.client.content.widgets;
 
+import com.dingziran.effective.client.ContentWidget;
+import com.dingziran.effective.client.ShowcaseAnnotations.ShowcaseData;
+import com.dingziran.effective.client.ShowcaseAnnotations.ShowcaseSource;
+import com.dingziran.effective.client.ShowcaseAnnotations.ShowcaseStyle;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.RunAsyncCallback;
 import com.google.gwt.i18n.client.Constants;
@@ -27,10 +31,12 @@ import com.google.gwt.user.client.ui.Widget;
 /**
  * Example file.
  */
+@ShowcaseStyle(".gwt-RadioButton")
 public class CwRadioButton extends ContentWidget {
   /**
    * The constants used in this Content Widget.
    */
+  @ShowcaseSource
   public static interface CwConstants extends Constants {
     String[] cwRadioButtonColors();
 
@@ -48,6 +54,7 @@ public class CwRadioButton extends ContentWidget {
   /**
    * An instance of the constants.
    */
+  @ShowcaseData
   private final CwConstants constants;
 
   /**
@@ -64,6 +71,7 @@ public class CwRadioButton extends ContentWidget {
   /**
    * Initialize this example.
    */
+  @ShowcaseSource
   @Override
   public Widget onInitialize() {
     // Create a vertical panel to align the radio buttons

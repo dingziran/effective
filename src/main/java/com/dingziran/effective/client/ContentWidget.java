@@ -15,7 +15,6 @@
  */
 package com.dingziran.effective.client;
 
-import com.dingziran.effective.client.i18n.ShowcaseConstants;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.logical.shared.HasValueChangeHandlers;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
@@ -179,6 +178,100 @@ public abstract class ContentWidget extends SimpleLayoutPanel implements
   public final String getName() {
     return name;
   }
+
+  /**
+   * Get the source code for a raw file.
+   * 
+   * @param filename the filename to load
+   * @param callback the callback to call when loaded
+   */
+  public void getRawSource(final String filename, final Callback<String> callback) {
+    if (rawSource.containsKey(filename)) {
+      callback.onSuccess(rawSource.get(filename));
+    } else {
+      RequestCallback rc = new RequestCallback() {
+        public void onError(Request request, Throwable exception) {
+          callback.onError();
+        }
+
+        public void onResponseReceived(Request request, Response response) {
+          String text = response.getText();
+          rawSource.put(filename, text);
+          callback.onSuccess(text);
+        }
+      };
+
+      String className = this.getClass().getName();
+      className = className.substring(className.lastIndexOf(".") + 1);
+      sendSourceRequest(rc, ShowcaseConstants.DST_SOURCE_RAW + filename + ".html");
+    }
+  }
+
+  /**
+   * Get the filenames of the raw source files.
+   * 
+   * @return the raw source files.
+   */
+  public List<String> getRawSourceFilenames() {
+    return Collections.unmodifiableList(rawSourceFilenames);
+  }
+
+  /**
+   * Request the styles associated with the widget.
+   * 
+   * @param callback the callback used when the styles become available
+   */
+  public void getStyle(final Callback<String> callback) {
+    if (styleDefs != null) {
+      callback.onSuccess(styleDefs);
+    } else {
+      RequestCallback rc = new RequestCallback() {
+        public void onError(Request request, Throwable exception) {
+          callback.onError();
+        }
+
+        public void onResponseReceived(Request request, Response response) {
+          styleDefs = response.getText();
+          callback.onSuccess(styleDefs);
+        }
+      };
+
+      String srcPath = ShowcaseConstants.DST_SOURCE_STYLE + Showcase.THEME;
+      if (LocaleInfo.getCurrentLocale().isRTL()) {
+        srcPath += "_rtl";
+      }
+      String className = this.getClass().getName();
+      className = className.substring(className.lastIndexOf(".") + 1);
+      sendSourceRequest(rc, srcPath + "/" + className + ".html");
+    }
+  }
+
+  /**
+   * Request the source code associated with the widget.
+   * 
+   * @param callback the callback used when the source become available
+   */
+  public void getSource(final Callback<String> callback) {
+    if (sourceCode != null) {
+      callback.onSuccess(sourceCode);
+    } else {
+      RequestCallback rc = new RequestCallback() {
+        public void onError(Request request, Throwable exception) {
+          callback.onError();
+        }
+
+        public void onResponseReceived(Request request, Response response) {
+          sourceCode = response.getText();
+          callback.onSuccess(sourceCode);
+        }
+      };
+
+      String className = this.getClass().getName();
+      className = className.substring(className.lastIndexOf(".") + 1);
+      sendSourceRequest(rc, ShowcaseConstants.DST_SOURCE_EXAMPLE + className + ".html");
+    }
+  }
+
   /**
    * Check if the widget should have margins.
    * 
@@ -295,98 +388,4 @@ public abstract class ContentWidget extends SimpleLayoutPanel implements
       callback.onError(null, e);
     }
   }
-
-  /**
-   * Get the source code for a raw file.
-   * 
-   * @param filename the filename to load
-   * @param callback the callback to call when loaded
-   */
-  public void getRawSource(final String filename, final Callback<String> callback) {
-    if (rawSource.containsKey(filename)) {
-      callback.onSuccess(rawSource.get(filename));
-    } else {
-      RequestCallback rc = new RequestCallback() {
-        public void onError(Request request, Throwable exception) {
-          callback.onError();
-        }
-
-        public void onResponseReceived(Request request, Response response) {
-          String text = response.getText();
-          rawSource.put(filename, text);
-          callback.onSuccess(text);
-        }
-      };
-
-      String className = this.getClass().getName();
-      className = className.substring(className.lastIndexOf(".") + 1);
-      sendSourceRequest(rc, ShowcaseConstants.DST_SOURCE_RAW + filename + ".html");
-    }
-  }
-
-  /**
-   * Get the filenames of the raw source files.
-   * 
-   * @return the raw source files.
-   */
-  public List<String> getRawSourceFilenames() {
-    return Collections.unmodifiableList(rawSourceFilenames);
-  }
-
-  /**
-   * Request the styles associated with the widget.
-   * 
-   * @param callback the callback used when the styles become available
-   */
-  public void getStyle(final Callback<String> callback) {
-    if (styleDefs != null) {
-      callback.onSuccess(styleDefs);
-    } else {
-      RequestCallback rc = new RequestCallback() {
-        public void onError(Request request, Throwable exception) {
-          callback.onError();
-        }
-
-        public void onResponseReceived(Request request, Response response) {
-          styleDefs = response.getText();
-          callback.onSuccess(styleDefs);
-        }
-      };
-
-      String srcPath = ShowcaseConstants.DST_SOURCE_STYLE + App.THEME;
-      if (LocaleInfo.getCurrentLocale().isRTL()) {
-        srcPath += "_rtl";
-      }
-      String className = this.getClass().getName();
-      className = className.substring(className.lastIndexOf(".") + 1);
-      sendSourceRequest(rc, srcPath + "/" + className + ".html");
-    }
-  }
-
-  /**
-   * Request the source code associated with the widget.
-   * 
-   * @param callback the callback used when the source become available
-   */
-  public void getSource(final Callback<String> callback) {
-    if (sourceCode != null) {
-      callback.onSuccess(sourceCode);
-    } else {
-      RequestCallback rc = new RequestCallback() {
-        public void onError(Request request, Throwable exception) {
-          callback.onError();
-        }
-
-        public void onResponseReceived(Request request, Response response) {
-          sourceCode = response.getText();
-          callback.onSuccess(sourceCode);
-        }
-      };
-
-      String className = this.getClass().getName();
-      className = className.substring(className.lastIndexOf(".") + 1);
-      sendSourceRequest(rc, ShowcaseConstants.DST_SOURCE_EXAMPLE + className + ".html");
-    }
-  }
-
 }

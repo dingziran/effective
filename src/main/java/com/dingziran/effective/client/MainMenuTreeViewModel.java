@@ -15,7 +15,13 @@
  */
 package com.dingziran.effective.client;
 
-import com.dingziran.effective.client.i18n.ShowcaseConstants;
+import com.dingziran.effective.client.content.widgets.CwBasicButton;
+import com.dingziran.effective.client.content.widgets.CwCheckBox;
+import com.dingziran.effective.client.content.widgets.CwCustomButton;
+import com.dingziran.effective.client.content.widgets.CwDatePicker;
+import com.dingziran.effective.client.content.widgets.CwFileUpload;
+import com.dingziran.effective.client.content.widgets.CwHyperlink;
+import com.dingziran.effective.client.content.widgets.CwRadioButton;
 import com.google.gwt.cell.client.AbstractCell;
 import com.google.gwt.core.client.prefetch.RunAsyncCode;
 import com.google.gwt.i18n.client.Constants;
@@ -106,7 +112,7 @@ public class MainMenuTreeViewModel implements TreeViewModel {
         splitPoints.add(splitPoint);
       }
       contentCategory.put(example, this);
-      contentToken.put(App.getContentWidgetToken(example), example);
+      contentToken.put(Showcase.getContentWidgetToken(example), example);
     }
 
     public String getName() {
@@ -161,7 +167,8 @@ public class MainMenuTreeViewModel implements TreeViewModel {
    */
   private final SelectionModel<ContentWidget> selectionModel;
 
-  public MainMenuTreeViewModel(ShowcaseConstants constants,SelectionModel<ContentWidget> selectionModel) {
+  public MainMenuTreeViewModel(ShowcaseConstants constants,
+      SelectionModel<ContentWidget> selectionModel) {
     this.selectionModel = selectionModel;
     initializeTree(constants);
   }
@@ -230,7 +237,17 @@ public class MainMenuTreeViewModel implements TreeViewModel {
       // CwCheckBox is the default example, so don't prefetch it.
       category.addExample(new CwCheckBox(constants), null);
       category.addExample(new CwRadioButton(constants),
-              RunAsyncCode.runAsyncCode(CwRadioButton.class));
+          RunAsyncCode.runAsyncCode(CwRadioButton.class));
+      category.addExample(new CwBasicButton(constants),
+          RunAsyncCode.runAsyncCode(CwBasicButton.class));
+      category.addExample(new CwCustomButton(constants),
+          RunAsyncCode.runAsyncCode(CwCustomButton.class));
+      category.addExample(new CwFileUpload(constants),
+          RunAsyncCode.runAsyncCode(CwFileUpload.class));
+      category.addExample(new CwDatePicker(constants),
+          RunAsyncCode.runAsyncCode(CwDatePicker.class));
+      category.addExample(new CwHyperlink(constants),
+          RunAsyncCode.runAsyncCode(CwHyperlink.class));
     }
 
   }
