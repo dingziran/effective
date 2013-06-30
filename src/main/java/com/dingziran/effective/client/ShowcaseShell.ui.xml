@@ -8,7 +8,7 @@
 
   <ui:with
     field='res'
-    type='com.dingziran.effective.client.ShowcaseResources' />
+    type='com.dingziran.effective.client.resources.ShowcaseResources' />
 
   <ui:style>
     .linkBar {

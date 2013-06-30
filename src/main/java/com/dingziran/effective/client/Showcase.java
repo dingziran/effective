@@ -16,6 +16,7 @@
 package com.dingziran.effective.client;
 
 import com.dingziran.effective.client.MainMenuTreeViewModel.Category;
+import com.dingziran.effective.client.resources.ShowcaseResources;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.prefetch.Prefetcher;
