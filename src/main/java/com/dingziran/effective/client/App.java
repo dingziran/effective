@@ -48,8 +48,10 @@ import java.util.Set;
  */
 public class App implements EntryPoint {
 	private Shell shell;
-  public void onModuleLoad() {
-	    shell = new Shell();
-	  RootPanel.get().add(shell);
-  }
+
+	public void onModuleLoad() {
+
+		shell = new Shell();
+		RootPanel.get().add(shell);
+	}
 }
