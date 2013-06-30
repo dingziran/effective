@@ -54,4 +54,28 @@ public class App implements EntryPoint {
 		shell = new Shell();
 		RootPanel.get().add(shell);
 	}
+	
+	
+	
+
+	  /**
+	   * Get the token for a given content widget.
+	   *
+	   * @return the content widget token.
+	   */
+	  public static String getContentWidgetToken(ContentWidget content) {
+	    return getContentWidgetToken(content.getClass());
+	  }
+
+	  /**
+	   * Get the token for a given content widget.
+	   *
+	   * @return the content widget token.
+	   */
+	  public static <C extends ContentWidget> String getContentWidgetToken(
+	      Class<C> cwClass) {
+	    String className = cwClass.getName();
+	    className = className.substring(className.lastIndexOf('.') + 1);
+	    return "!" + className;
+	  }
 }
