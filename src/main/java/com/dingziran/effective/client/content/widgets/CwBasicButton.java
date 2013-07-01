@@ -21,6 +21,7 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.i18n.client.Constants;
 import com.dingziran.effective.client.ContentWidget;
+import com.dingziran.effective.client.ContentWidgetView;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
@@ -57,25 +58,21 @@ public class CwBasicButton extends ContentWidget {
    * @param constants the constants
    */
   public CwBasicButton(CwConstants constants) {
-    super(constants.cwBasicButtonName(), constants.cwBasicButtonDescription(),
-        true);
+    super(constants.cwBasicButtonName(), constants.cwBasicButtonDescription());
     this.constants = constants;
-  }
-
-  /**
-   * Initialize this example.
-   */
-  @Override
-  public Widget onInitialize() {
+    view = new ContentWidgetView(hasMargins(), hasScrollableContent());
+    view.setName(getName());
+    view.setDescription(getDescription());
+    setWidget(view);
     // Create a panel to align the widgets
     HorizontalPanel hPanel = new HorizontalPanel();
     hPanel.setSpacing(10);
-
+    final String msg=constants.cwBasicButtonClickMessage();
     // Add a normal button
     Button normalButton = new Button(
         constants.cwBasicButtonNormal(), new ClickHandler() {
           public void onClick(ClickEvent event) {
-            Window.alert(constants.cwBasicButtonClickMessage());
+            Window.alert(msg);
           }
         });
     normalButton.ensureDebugId("cwBasicButton-normal");
@@ -86,22 +83,8 @@ public class CwBasicButton extends ContentWidget {
     disabledButton.ensureDebugId("cwBasicButton-disabled");
     disabledButton.setEnabled(false);
     hPanel.add(disabledButton);
-
-    // Return the panel
-    return hPanel;
+    view.setExample(hPanel);
   }
 
-  @Override
-  protected void asyncOnInitialize(final AsyncCallback<Widget> callback) {
-    GWT.runAsync(CwBasicButton.class, new RunAsyncCallback() {
 
-      public void onFailure(Throwable caught) {
-        callback.onFailure(caught);
-      }
-
-      public void onSuccess() {
-        callback.onSuccess(onInitialize());
-      }
-    });
-  }
 }

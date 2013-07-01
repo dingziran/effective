@@ -22,6 +22,7 @@ import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.i18n.client.Constants;
 import com.google.gwt.i18n.client.DateTimeFormat;
 import com.dingziran.effective.client.ContentWidget;
+import com.dingziran.effective.client.ContentWidgetView;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Label;
@@ -61,17 +62,12 @@ public class CwDatePicker extends ContentWidget {
    * @param constants the constants
    */
   public CwDatePicker(CwConstants constants) {
-    super(constants.cwDatePickerName(), constants.cwDatePickerDescription(),
-        true);
+    super(constants.cwDatePickerName(), constants.cwDatePickerDescription());
     this.constants = constants;
-  }
-
-  /**
-   * Initialize this example.
-   */
-  @SuppressWarnings("deprecation")
-  @Override
-  public Widget onInitialize() {
+    view = new ContentWidgetView(hasMargins(), hasScrollableContent());
+    view.setName(getName());
+    view.setDescription(getDescription());
+    setWidget(view);
     // Create a basic date picker
     DatePicker datePicker = new DatePicker();
     final Label text = new Label();
@@ -100,20 +96,7 @@ public class CwDatePicker extends ContentWidget {
     vPanel.add(datePicker);
     vPanel.add(new HTML(constants.cwDatePickerBoxLabel()));
     vPanel.add(dateBox);
-    return vPanel;
+    view.setExample(vPanel);
   }
 
-  @Override
-  protected void asyncOnInitialize(final AsyncCallback<Widget> callback) {
-    GWT.runAsync(CwDatePicker.class, new RunAsyncCallback() {
-
-      public void onFailure(Throwable caught) {
-        callback.onFailure(caught);
-      }
-
-      public void onSuccess() {
-        callback.onSuccess(onInitialize());
-      }
-    });
-  }
 }

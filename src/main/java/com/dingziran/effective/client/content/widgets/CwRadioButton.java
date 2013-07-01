@@ -16,6 +16,7 @@
 package com.dingziran.effective.client.content.widgets;
 
 import com.dingziran.effective.client.ContentWidget;
+import com.dingziran.effective.client.ContentWidgetView;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.RunAsyncCallback;
 import com.google.gwt.i18n.client.Constants;
@@ -57,16 +58,12 @@ public class CwRadioButton extends ContentWidget {
    * @param constants the constants
    */
   public CwRadioButton(CwConstants constants) {
-    super(constants.cwRadioButtonName(), constants.cwRadioButtonDescription(),
-        true);
+    super(constants.cwRadioButtonName(), constants.cwRadioButtonDescription());
     this.constants = constants;
-  }
-
-  /**
-   * Initialize this example.
-   */
-  @Override
-  public Widget onInitialize() {
+    view = new ContentWidgetView(hasMargins(), hasScrollableContent());
+    view.setName(getName());
+    view.setDescription(getDescription());
+    setWidget(view);
     // Create a vertical panel to align the radio buttons
     VerticalPanel vPanel = new VerticalPanel();
     vPanel.add(new HTML(constants.cwRadioButtonSelectColor()));
@@ -98,21 +95,7 @@ public class CwRadioButton extends ContentWidget {
       }
       vPanel.add(radioButton);
     }
-
-    return vPanel;
+    view.setExample(vPanel);
   }
 
-  @Override
-  protected void asyncOnInitialize(final AsyncCallback<Widget> callback) {
-    GWT.runAsync(CwRadioButton.class, new RunAsyncCallback() {
-
-      public void onFailure(Throwable caught) {
-        callback.onFailure(caught);
-      }
-
-      public void onSuccess() {
-        callback.onSuccess(onInitialize());
-      }
-    });
-  }
 }

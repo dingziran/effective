@@ -17,6 +17,7 @@ package com.dingziran.effective.client.content.widgets;
 
 import com.google.gwt.i18n.client.Constants;
 import com.dingziran.effective.client.ContentWidget;
+import com.dingziran.effective.client.ContentWidgetView;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.CheckBox;
 import com.google.gwt.user.client.ui.HTML;
@@ -51,15 +52,13 @@ public class CwCheckBox extends ContentWidget {
    * @param constants the constants
    */
   public CwCheckBox(CwConstants constants) {
-    super(constants.cwCheckBoxName(), constants.cwCheckBoxDescription(), true);
+    super(constants.cwCheckBoxName(), constants.cwCheckBoxDescription());
     this.constants = constants;
-  }
 
-  /**
-   * Initialize this example.
-   */
-  @Override
-  public Widget onInitialize() {
+    view = new ContentWidgetView(hasMargins(), hasScrollableContent());
+    view.setName(getName());
+    view.setDescription(getDescription());
+    setWidget(view);
     // Create a vertical panel to align the check boxes
     VerticalPanel vPanel = new VerticalPanel();
     HTML label = new HTML(constants.cwCheckBoxCheckAll());
@@ -80,16 +79,7 @@ public class CwCheckBox extends ContentWidget {
 
       vPanel.add(checkBox);
     }
-
-    // Return the panel of checkboxes
-    return vPanel;
+    view.setExample(vPanel);
   }
 
-  @Override
-  protected void asyncOnInitialize(final AsyncCallback<Widget> callback) {
-    /*
-     * CheckBox is the first demo loaded, so go ahead and load it synchronously.
-     */
-    callback.onSuccess(onInitialize());
-  }
 }

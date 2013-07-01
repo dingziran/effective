@@ -267,7 +267,7 @@ public class ShowcaseShell extends ResizeComposite {
 
     // Setup the options bar.
     tabExample.setVisible(true);
-    tabStyle.setVisible(content.hasStyle());
+    tabStyle.setVisible(false);
     tabSource.setVisible(true);
 
     /*

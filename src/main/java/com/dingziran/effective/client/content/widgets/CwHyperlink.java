@@ -19,6 +19,7 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.RunAsyncCallback;
 import com.google.gwt.i18n.client.Constants;
 import com.dingziran.effective.client.ContentWidget;
+import com.dingziran.effective.client.ContentWidgetView;
 import com.dingziran.effective.client.Showcase;
 import com.dingziran.effective.client.ShowcaseConstants;
 import com.google.gwt.user.client.rpc.AsyncCallback;
@@ -54,15 +55,12 @@ public class CwHyperlink extends ContentWidget {
    */
   public CwHyperlink(CwConstants constants) {
     super(
-        constants.cwHyperlinkName(), constants.cwHyperlinkDescription(), true);
+        constants.cwHyperlinkName(), constants.cwHyperlinkDescription());
     this.constants = constants;
-  }
-
-  /**
-   * Initialize this example.
-   */
-  @Override
-  public Widget onInitialize() {
+    view = new ContentWidgetView(hasMargins(), hasScrollableContent());
+    view.setName(getName());
+    view.setDescription(getDescription());
+    setWidget(view);
     // Add a label
     VerticalPanel vPanel = new VerticalPanel();
     vPanel.add(new HTML(constants.cwHyperlinkChoose()));
@@ -82,23 +80,9 @@ public class CwHyperlink extends ContentWidget {
     vPanel.add(
         getHyperlink(CwDatePicker.class, allConstants.cwDatePickerName()));
 
-    // Return the panel
-    return vPanel;
+    view.setExample(vPanel);
   }
 
-  @Override
-  protected void asyncOnInitialize(final AsyncCallback<Widget> callback) {
-    GWT.runAsync(CwHyperlink.class, new RunAsyncCallback() {
-
-      public void onFailure(Throwable caught) {
-        callback.onFailure(caught);
-      }
-
-      public void onSuccess() {
-        callback.onSuccess(onInitialize());
-      }
-    });
-  }
 
   /**
    * Get a {@link Hyperlink} to a section based on the name of the

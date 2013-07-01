@@ -82,7 +82,7 @@ public abstract class ContentWidget extends SimpleLayoutPanel implements
   /**
    * True if this example has associated styles, false if not.
    */
-  private final boolean hasStyle;
+  //private final boolean hasStyle;
 
   /**
    * The name of the example.
@@ -113,17 +113,9 @@ public abstract class ContentWidget extends SimpleLayoutPanel implements
   /**
    * The view that holds the name, description, and example.
    */
-  private ContentWidgetView view;
+  protected ContentWidgetView view;
 
-  /**
-   * Whether the demo widget has been initialized.
-   */
-  private boolean widgetInitialized;
 
-  /**
-   * Whether the demo widget is (asynchronously) initializing.
-   */
-  private boolean widgetInitializing;
 
   /**
    * Construct a {@link ContentWidget}.
@@ -133,8 +125,8 @@ public abstract class ContentWidget extends SimpleLayoutPanel implements
    * @param hasStyle true if the example has associated styles
    * @param rawSourceFiles the list of raw source files to include
    */
-  public ContentWidget(String name, String description, boolean hasStyle, String... rawSourceFiles) {
-    this(name, SafeHtmlUtils.fromString(description), hasStyle, rawSourceFiles);
+  public ContentWidget(String name, String description) {
+    this(name, SafeHtmlUtils.fromString(description));
   }
 
   /**
@@ -145,17 +137,16 @@ public abstract class ContentWidget extends SimpleLayoutPanel implements
    * @param hasStyle true if the example has associated styles
    * @param rawSourceFiles the list of raw source files to include
    */
-  public ContentWidget(String name, SafeHtml description, boolean hasStyle,
-      String... rawSourceFiles) {
+  public ContentWidget(String name, SafeHtml description) {
     this.name = name;
     this.description = description;
-    this.hasStyle = hasStyle;
-    if (rawSourceFiles != null) {
+    //this.hasStyle = hasStyle;
+/*    if (rawSourceFiles != null) {
       for (String rawSourceFile : rawSourceFiles) {
         rawSourceFilenames.add(rawSourceFile);
       }
     }
-  }
+*/  }
 
   public HandlerRegistration addValueChangeHandler(ValueChangeHandler<String> handler) {
     return addHandler(handler, ValueChangeEvent.getType());
@@ -290,32 +281,7 @@ public abstract class ContentWidget extends SimpleLayoutPanel implements
     return true;
   }
 
-  /**
-   * Returns true if this widget has a style section.
-   * 
-   * @return true if style tab available
-   */
-  public final boolean hasStyle() {
-    return hasStyle;
-  }
 
-  /**
-   * When the widget is first initialized, this method is called. If it returns
-   * a Widget, the widget will be added as the first tab. Return null to disable
-   * the first tab.
-   * 
-   * @return the widget to add to the first tab
-   */
-  public abstract Widget onInitialize();
-
-  /**
-   * Called when initialization has completed and the widget has been added to
-   * the page.
-   */
-  public void onInitializeComplete() {
-  }
-
-  protected abstract void asyncOnInitialize(final AsyncCallback<Widget> callback);
 
   /**
    * Fire a {@link ValueChangeEvent} indicating that the user wishes to see the
@@ -331,47 +297,7 @@ public abstract class ContentWidget extends SimpleLayoutPanel implements
     ValueChangeEvent.fire(this, filename);
   }
 
-  @Override
-  protected void onLoad() {
-    if (view == null) {
-      view = new ContentWidgetView(hasMargins(), hasScrollableContent());
-      view.setName(getName());
-      view.setDescription(getDescription());
-      setWidget(view);
-    }
-    ensureWidgetInitialized();
-    super.onLoad();
-  }
 
-  /**
-   * Ensure that the demo widget has been initialized. Note that initialization
-   * can fail if there is a network failure.
-   */
-  private void ensureWidgetInitialized() {
-    if (widgetInitializing || widgetInitialized) {
-      return;
-    }
-
-    widgetInitializing = true;
-
-    asyncOnInitialize(new AsyncCallback<Widget>() {
-      public void onFailure(Throwable reason) {
-        widgetInitializing = false;
-        Window.alert("Failed to download code for this widget (" + reason + ")");
-      }
-
-      public void onSuccess(Widget result) {
-        widgetInitializing = false;
-        widgetInitialized = true;
-
-        Widget widget = result;
-        if (widget != null) {
-          view.setExample(widget);
-        }
-        onInitializeComplete();
-      }
-    });
-  }
 
   /**
    * Send a request for source code.

@@ -106,9 +106,10 @@ public class Showcase implements EntryPoint {
     shell = new ShowcaseShell(treeModel);
     RootLayoutPanel.get().add(shell);
 
+    final CellTree mainMenu = shell.getMainMenu();
+/*
     // Prefetch examples when opening the Category tree nodes.
     final List<Category> prefetched = new ArrayList<Category>();
-    final CellTree mainMenu = shell.getMainMenu();
     mainMenu.addOpenHandler(new OpenHandler<TreeNode>() {
       public void onOpen(OpenEvent<TreeNode> event) {
         Object value = event.getTarget().getValue();
@@ -126,7 +127,7 @@ public class Showcase implements EntryPoint {
 
     // Always prefetch.
     Prefetcher.start();
-
+*/
     // Change the history token when a main menu item is selected.
     selectionModel.addSelectionChangeHandler(
         new SelectionChangeEvent.Handler() {

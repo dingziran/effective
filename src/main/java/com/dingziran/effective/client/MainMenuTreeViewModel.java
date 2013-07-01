@@ -99,18 +99,13 @@ public class MainMenuTreeViewModel implements TreeViewModel {
         new ListDataProvider<ContentWidget>();
     private final String name;
     private NodeInfo<ContentWidget> nodeInfo;
-    private final List<RunAsyncCode> splitPoints =
-        new ArrayList<RunAsyncCode>();
 
     public Category(String name) {
       this.name = name;
     }
 
-    public void addExample(ContentWidget example, RunAsyncCode splitPoint) {
+    public void addExample(ContentWidget example) {
       examples.getList().add(example);
-      if (splitPoint != null) {
-        splitPoints.add(splitPoint);
-      }
       contentCategory.put(example, this);
       contentToken.put(Showcase.getContentWidgetToken(example), example);
     }
@@ -132,14 +127,6 @@ public class MainMenuTreeViewModel implements TreeViewModel {
       return nodeInfo;
     }
 
-    /**
-     * Get the list of split points to prefetch for this category.
-     * 
-     * @return the list of classes in this category
-     */
-    public Iterable<RunAsyncCode> getSplitPoints() {
-      return splitPoints;
-    }
   }
 
   /**
@@ -235,19 +222,13 @@ public class MainMenuTreeViewModel implements TreeViewModel {
       Category category = new Category(constants.categoryWidgets());
       catList.add(category);
       // CwCheckBox is the default example, so don't prefetch it.
-      category.addExample(new CwCheckBox(constants), null);
-      category.addExample(new CwRadioButton(constants),
-          RunAsyncCode.runAsyncCode(CwRadioButton.class));
-      category.addExample(new CwBasicButton(constants),
-          RunAsyncCode.runAsyncCode(CwBasicButton.class));
-      category.addExample(new CwCustomButton(constants),
-          RunAsyncCode.runAsyncCode(CwCustomButton.class));
-      category.addExample(new CwFileUpload(constants),
-          RunAsyncCode.runAsyncCode(CwFileUpload.class));
-      category.addExample(new CwDatePicker(constants),
-          RunAsyncCode.runAsyncCode(CwDatePicker.class));
-      category.addExample(new CwHyperlink(constants),
-          RunAsyncCode.runAsyncCode(CwHyperlink.class));
+      category.addExample(new CwCheckBox(constants));
+      category.addExample(new CwRadioButton(constants));
+      category.addExample(new CwBasicButton(constants));
+      category.addExample(new CwCustomButton(constants));
+      category.addExample(new CwFileUpload(constants));
+      category.addExample(new CwDatePicker(constants));
+      category.addExample(new CwHyperlink(constants));
     }
 
   }

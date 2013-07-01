@@ -19,6 +19,7 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.RunAsyncCallback;
 import com.google.gwt.i18n.client.Constants;
 import com.dingziran.effective.client.ContentWidget;
+import com.dingziran.effective.client.ContentWidgetView;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
@@ -61,16 +62,12 @@ public class CwFileUpload extends ContentWidget {
    * @param constants the constants
    */
   public CwFileUpload(CwConstants constants) {
-    super(constants.cwFileUploadName(), constants.cwFileUploadDescription(),
-        true);
+    super(constants.cwFileUploadName(), constants.cwFileUploadDescription());
     this.constants = constants;
-  }
-
-  /**
-   * Initialize this example.
-   */
-  @Override
-  public Widget onInitialize() {
+    view = new ContentWidgetView(hasMargins(), hasScrollableContent());
+    view.setName(getName());
+    view.setDescription(getDescription());
+    setWidget(view);
     // Create a vertical panel to align the content
     VerticalPanel vPanel = new VerticalPanel();
 
@@ -81,6 +78,8 @@ public class CwFileUpload extends ContentWidget {
     final FileUpload fileUpload = new FileUpload();
     fileUpload.ensureDebugId("cwFileUpload");
     vPanel.add(fileUpload);
+    final String msg1=constants.cwFileUploadNoFileError();
+    final String msg2=constants.cwFileUploadSuccessful();
 
     // Add a button to upload the file
     Button uploadButton = new Button(constants.cwFileUploadButton());
@@ -88,30 +87,16 @@ public class CwFileUpload extends ContentWidget {
       public void onClick(ClickEvent event) {
         String filename = fileUpload.getFilename();
         if (filename.length() == 0) {
-          Window.alert(constants.cwFileUploadNoFileError());
+          Window.alert(msg1);
         } else {
-          Window.alert(constants.cwFileUploadSuccessful());
+          Window.alert(msg2);
         }
       }
     });
     vPanel.add(new HTML("<br>"));
     vPanel.add(uploadButton);
 
-    // Return the layout panel
-    return vPanel;
+    view.setExample(vPanel);
   }
 
-  @Override
-  protected void asyncOnInitialize(final AsyncCallback<Widget> callback) {
-    GWT.runAsync(CwFileUpload.class, new RunAsyncCallback() {
-
-      public void onFailure(Throwable caught) {
-        callback.onFailure(caught);
-      }
-
-      public void onSuccess() {
-        callback.onSuccess(onInitialize());
-      }
-    });
-  }
 }

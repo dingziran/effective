@@ -19,6 +19,7 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.RunAsyncCallback;
 import com.google.gwt.i18n.client.Constants;
 import com.dingziran.effective.client.ContentWidget;
+import com.dingziran.effective.client.ContentWidgetView;
 import com.dingziran.effective.client.Showcase;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.HTML;
@@ -57,16 +58,12 @@ public class CwCustomButton extends ContentWidget {
    * @param constants the constants
    */
   public CwCustomButton(CwConstants constants) {
-    super(constants.cwCustomButtonName(), constants.cwCustomButtonDescription(),
-        true);
+    super(constants.cwCustomButtonName(), constants.cwCustomButtonDescription());
     this.constants = constants;
-  }
-
-  /**
-   * Initialize this example.
-   */
-  @Override
-  public Widget onInitialize() {
+    view = new ContentWidgetView(hasMargins(), hasScrollableContent());
+    view.setName(getName());
+    view.setDescription(getDescription());
+    setWidget(view);
     // Create a panel to layout the widgets
     VerticalPanel vpanel = new VerticalPanel();
     HorizontalPanel pushPanel = new HorizontalPanel();
@@ -106,21 +103,7 @@ public class CwCustomButton extends ContentWidget {
     disabledToggleButton.setEnabled(false);
     togglePanel.add(disabledToggleButton);
 
-    // Return the panel
-    return vpanel;
+    view.setExample(vpanel);
   }
 
-  @Override
-  protected void asyncOnInitialize(final AsyncCallback<Widget> callback) {
-    GWT.runAsync(CwCustomButton.class, new RunAsyncCallback() {
-
-      public void onFailure(Throwable caught) {
-        callback.onFailure(caught);
-      }
-
-      public void onSuccess() {
-        callback.onSuccess(onInitialize());
-      }
-    });
-  }
 }
