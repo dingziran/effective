@@ -92,13 +92,17 @@ public class Showcase implements EntryPoint {
   public static Factory getFactory() {
 	return factory;
 }
-
+  static SimpleEventBus eventBus;
+  public static SimpleEventBus getEventBus(){
+	  return eventBus;
+  }
 /**
    * This is the entry point method.
    */
   public void onModuleLoad() {
 	  factory=GWT.create(Factory.class);
-      factory.initialize(new SimpleEventBus());
+	  eventBus=new SimpleEventBus();
+      factory.initialize(eventBus);
     // Inject global styles.
     injectThemeStyleSheet();
     images.css().ensureInjected();

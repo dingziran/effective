@@ -23,7 +23,7 @@ import com.dingziran.effective.client.content.widgets.*;
  */
 public interface ShowcaseConstants extends MenuConstants, CwCheckBox.CwConstants,
     CwRadioButton.CwConstants, CwBasicButton.CwConstants, CwCustomButton.CwConstants,
-     CwFileUpload.CwConstants, CwHyperlink.CwConstants, CwDatePicker.CwConstants  {
+     CwFileUpload.CwConstants, CwHyperlink.CwConstants, CwDatePicker.CwConstants,CwPerson.CwConstants  {
 
   /**
    * The path to source code for examples, raw files, and style definitions.

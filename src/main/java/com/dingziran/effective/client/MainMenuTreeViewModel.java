@@ -21,6 +21,7 @@ import com.dingziran.effective.client.content.widgets.CwCustomButton;
 import com.dingziran.effective.client.content.widgets.CwDatePicker;
 import com.dingziran.effective.client.content.widgets.CwFileUpload;
 import com.dingziran.effective.client.content.widgets.CwHyperlink;
+import com.dingziran.effective.client.content.widgets.CwPerson;
 import com.dingziran.effective.client.content.widgets.CwRadioButton;
 import com.google.gwt.cell.client.AbstractCell;
 import com.google.gwt.core.client.prefetch.RunAsyncCode;
@@ -229,6 +230,7 @@ public class MainMenuTreeViewModel implements TreeViewModel {
       category.addExample(new CwFileUpload(constants));
       category.addExample(new CwDatePicker(constants));
       category.addExample(new CwHyperlink(constants));
+      category.addExample(new CwPerson(constants));
     }
 
   }

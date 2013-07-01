@@ -14,7 +14,7 @@ import com.google.web.bindery.requestfactory.shared.Service;
 public interface Factory extends RequestFactory
 {
     ContactRequest createContactRequest ();
-
+    GoalRequest createGoalRequest();
 
     @Service(value = Contact.class)
     public interface ContactRequest extends RequestContext
@@ -26,11 +26,10 @@ public interface Factory extends RequestFactory
         InstanceRequest<ContactProxy, Void> persist ();
         InstanceRequest<ContactProxy, Void> remove ();
     }
-    GoalRequest createGoalRequest();
     @Service(value=Goal.class)
     public interface GoalRequest extends RequestContext
     {
-
+        Request<List<GoalProxy>> findGoalEntries(int firstResult, int maxResults);
         Request<Long> countGoals();
     }
 }
