@@ -88,8 +88,12 @@ public class Showcase implements EntryPoint {
    * The main application shell.
    */
   private ShowcaseShell shell;
-  Factory factory;
-  /**
+  static Factory factory;
+  public static Factory getFactory() {
+	return factory;
+}
+
+/**
    * This is the entry point method.
    */
   public void onModuleLoad() {

@@ -19,3 +19,7 @@ jpa setup --database HYPERSONIC_IN_MEMORY --provider HIBERNATE
 // Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log opened at 2013-07-01 19:33:02
 // Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log closed at 2013-07-01 19:45:51
 // Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log opened at 2013-07-01 19:47:07
+entity jpa --class ~.domain.Goal --testAutomatically 
+field string --fieldName name
+field string --fieldName description
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log closed at 2013-07-01 20:27:51

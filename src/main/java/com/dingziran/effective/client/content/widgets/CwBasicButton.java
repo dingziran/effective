@@ -22,11 +22,14 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.i18n.client.Constants;
 import com.dingziran.effective.client.ContentWidget;
 import com.dingziran.effective.client.ContentWidgetView;
+import com.dingziran.effective.client.Showcase;
+import com.dingziran.effective.shared.Factory.GoalRequest;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Widget;
+import com.google.web.bindery.requestfactory.shared.Receiver;
 
 /**
  * Example file.

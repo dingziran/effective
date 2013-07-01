@@ -2,6 +2,7 @@ package com.dingziran.effective.shared;
 
 import java.util.List;
 
+import com.dingziran.effective.domain.Goal;
 import com.dingziran.effective.server.Contact;
 import com.google.web.bindery.requestfactory.shared.InstanceRequest;
 import com.google.web.bindery.requestfactory.shared.Request;
@@ -24,5 +25,12 @@ public interface Factory extends RequestFactory
 
         InstanceRequest<ContactProxy, Void> persist ();
         InstanceRequest<ContactProxy, Void> remove ();
+    }
+    GoalRequest createGoalRequest();
+    @Service(value=Goal.class)
+    public interface GoalRequest extends RequestContext
+    {
+
+        Request<Long> countGoals();
     }
 }
