@@ -17,6 +17,7 @@ package com.dingziran.effective.client;
 
 import com.dingziran.effective.client.MainMenuTreeViewModel.Category;
 import com.dingziran.effective.client.resources.ShowcaseResources;
+import com.dingziran.effective.shared.Factory;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.prefetch.Prefetcher;
@@ -27,6 +28,7 @@ import com.google.gwt.event.logical.shared.OpenEvent;
 import com.google.gwt.event.logical.shared.OpenHandler;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
+import com.google.gwt.event.shared.SimpleEventBus;
 import com.google.gwt.i18n.client.LocaleInfo;
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
 import com.google.gwt.safehtml.shared.SafeHtmlUtils;
@@ -39,6 +41,7 @@ import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.view.client.SelectionChangeEvent;
 import com.google.gwt.view.client.SingleSelectionModel;
+import com.google.web.bindery.requestfactory.shared.Receiver;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -85,12 +88,13 @@ public class Showcase implements EntryPoint {
    * The main application shell.
    */
   private ShowcaseShell shell;
-
+  Factory factory;
   /**
    * This is the entry point method.
    */
   public void onModuleLoad() {
-
+	  factory=GWT.create(Factory.class);
+      factory.initialize(new SimpleEventBus());
     // Inject global styles.
     injectThemeStyleSheet();
     images.css().ensureInjected();
