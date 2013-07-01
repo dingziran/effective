@@ -59,30 +59,6 @@ public class ShowcaseShell extends ResizeComposite {
   }
 
   /**
-   * The callback used when retrieving source code.
-   */
-  private class CustomCallback implements ContentWidget.Callback<String> {
-
-    private int id;
-
-    public CustomCallback() {
-      id = ++nextCallbackId;
-    }
-
-    public void onError() {
-      if (id == nextCallbackId) {
-        contentSource.setHTML("Cannot find resource", Direction.LTR);
-      }
-    }
-
-    public void onSuccess(String value) {
-      if (id == nextCallbackId) {
-        contentSource.setHTML(value, Direction.LTR);
-      }
-    }
-  }
-
-  /**
    * The text color of the selected tab.
    */
   private static final String SELECTED_TAB_COLOR = "#333333";
@@ -199,29 +175,6 @@ public class ShowcaseShell extends ResizeComposite {
       localeSelectionCell.setAlign("left");
       linkCell.setPropertyString("align", "left");
     }
-
-    // Handle events from the tabs.
-    tabExample.addClickHandler(new ClickHandler() {
-      public void onClick(ClickEvent event) {
-        showExample();
-      }
-    });
-    tabStyle.addClickHandler(new ClickHandler() {
-      public void onClick(ClickEvent event) {
-        showSourceStyles();
-      }
-    });
-    tabSource.addClickHandler(new ClickHandler() {
-      public void onClick(ClickEvent event) {
-        showSourceFile();
-      }
-    });
-    tabSourceList.addChangeHandler(new ChangeHandler() {
-      public void onChange(ChangeEvent event) {
-        showSourceFile();
-      }
-    });
-
     // Default to no content.
     contentPanel.ensureDebugId("contentPanel");
     setContent(null);
@@ -257,7 +210,7 @@ public class ShowcaseShell extends ResizeComposite {
 
     this.content = content;
     if (content == null) {
-      tabExample.setVisible(false);
+      tabExample.setVisible(true);
       tabStyle.setVisible(false);
       tabSource.setVisible(false);
       tabSourceList.setVisible(false);
@@ -268,7 +221,7 @@ public class ShowcaseShell extends ResizeComposite {
     // Setup the options bar.
     tabExample.setVisible(true);
     tabStyle.setVisible(false);
-    tabSource.setVisible(true);
+    tabSource.setVisible(false);
 
     /*
      * Show the list of raw source files if there are any. We need to add at
@@ -279,24 +232,7 @@ public class ShowcaseShell extends ResizeComposite {
      */
     tabSourceList.clear();
     tabSourceList.addItem("Example");
-    List<String> rawFilenames = content.getRawSourceFilenames();
-    if (rawFilenames.size() > 0) {
-      String text = tabSource.getText();
-      if (!text.endsWith(":")) {
-        tabSource.setText(text + ":");
-      }
-      tabSourceList.setVisible(true);
-      for (String filename : rawFilenames) {
-        tabSourceList.addItem(filename);
-      }
-      tabSourceList.setSelectedIndex(0);
-    } else {
-      String text = tabSource.getText();
-      if (text.endsWith(":")) {
-        tabSource.setText(text.substring(0, text.length() - 1));
-      }
-      tabSourceList.setVisible(false);
-    }
+    tabSourceList.setVisible(false);
 
     // Handle user requests for raw source.
     contentSourceHandler = content.addValueChangeHandler(
@@ -304,11 +240,9 @@ public class ShowcaseShell extends ResizeComposite {
           public void onValueChange(ValueChangeEvent<String> event) {
             // Select the file in the list box.
             String filename = event.getValue();
-            int index = content.getRawSourceFilenames().indexOf(filename);
-            tabSourceList.setSelectedIndex(index + 1);
 
             // Show the file.
-            showSourceFile();
+            //showSourceFile();
           }
         });
 
@@ -377,50 +311,5 @@ public class ShowcaseShell extends ResizeComposite {
     tabSource.getElement().getStyle().clearColor();
 
     contentPanel.setWidget(content);
-  }
-
-  /**
-   * Show a source file based on the selection in the source list.
-   */
-  private void showSourceFile() {
-    if (content == null) {
-      return;
-    }
-
-    // Set the highlighted tab.
-    tabExample.getElement().getStyle().clearColor();
-    tabStyle.getElement().getStyle().clearColor();
-    tabSource.getElement().getStyle().setColor(SELECTED_TAB_COLOR);
-
-    contentSource.setHTML(loadingHtml, Direction.LTR);
-    contentPanel.setWidget(new ScrollPanel(contentSource));
-    if (!tabSourceList.isVisible() || tabSourceList.getSelectedIndex() == 0) {
-      // If the source list isn't visible or the first item is selected, load
-      // the source for the example.
-      content.getSource(new CustomCallback());
-    } else {
-      // Load a raw file.
-      String filename = tabSourceList.getItemText(
-          tabSourceList.getSelectedIndex());
-      content.getRawSource(filename, new CustomCallback());
-    }
-  }
-
-  /**
-   * Show the source CSS style.
-   */
-  private void showSourceStyles() {
-    if (content == null) {
-      return;
-    }
-
-    // Set the highlighted tab.
-    tabExample.getElement().getStyle().clearColor();
-    tabStyle.getElement().getStyle().setColor(SELECTED_TAB_COLOR);
-    tabSource.getElement().getStyle().clearColor();
-
-    contentSource.setHTML(loadingHtml, Direction.LTR);
-    contentPanel.setWidget(new ScrollPanel(contentSource));
-    content.getStyle(new CustomCallback());
   }
 }
